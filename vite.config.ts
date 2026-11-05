@@ -4,15 +4,15 @@ import { cwd } from '@dephub/path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
-const entry = await glob(['src/**/*.ts'], {
+const entry = await glob(['src/**/*.ts', '!src/**/*.test.ts'], {
   absolute: true,
 });
 
 const dtsPlugin = dts({
   entryRoot: 'src',
-  outDir: 'dist',
+  outDirs: 'dist',
   tsconfigPath: './tsconfig.json',
-  exclude: ['vite.config.ts', 'src/cli.ts'],
+  exclude: ['vite.config.ts', 'src/cli.ts', 'src/**/*.test.ts'],
 });
 
 export default defineConfig({
@@ -23,7 +23,7 @@ export default defineConfig({
     },
     target: 'esnext',
     reportCompressedSize: true,
-    minify: 'esbuild',
+
     emptyOutDir: true,
 
     rollupOptions: {
