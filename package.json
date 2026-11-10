@@ -1,7 +1,7 @@
 {
   "name": "@dephub/write",
   "type": "module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "File writing utility with automatic directory creation for Node.js",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -9,10 +9,12 @@
     "write": "./dist/cli.js"
   },
   "scripts": {
-    "prepublishOnly": "pnpm lint && pnpm check && pnpm build",
+    "prepublishOnly": "pnpm check && pnpm test && pnpm build",
     "release": "pnpm publish",
     "docs": "lineo md 'src/**/*.ts' --outFile code.md --outDir temp",
-    "check": "tsc --noEmit --skipLibCheck",
+    "test": "node --test",
+    "check": "pnpm fmt && pnpm lint && pnpm check-types",
+    "check-types": "tsc --noEmit --skipLibCheck",
     "lint": "eslint . --fix --max-warnings 0",
     "fmt": "prettier --write .",
     "clean": "rm -rf dist",
@@ -36,9 +38,6 @@
     "email": "dev@estarlincito.com",
     "url": "https://estarlincito.com"
   },
-  "engines": {
-    "node": ">=22.5.0"
-  },
   "files": [
     "LICENSE",
     "README.md",
@@ -56,7 +55,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@10.30.3",
   "dependencies": {
     "@dephub/command": "^3.0.0",
     "@dephub/logger": "^1.2.0"
@@ -64,12 +62,19 @@
   "devDependencies": {
     "@dephub/eslint-ts": "^1.0.5",
     "@dephub/glob": "^1.0.2",
-    "@dephub/path": "^1.0.2",
+    "@dephub/path": "^2.0.0",
     "@types/node": "^26.6.6",
     "eslint": "^10.14.0",
     "prettier": "^3.9.10",
     "typescript": "6.0.3",
-    "vite": "^8.3.5",
+    "vite": "^8.3.6",
     "vite-plugin-dts": "^5.1.2"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=10.30.3"
   }
 }

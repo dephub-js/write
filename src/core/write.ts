@@ -1,7 +1,8 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
-import { existsSync } from 'node:fs';
 import { writeFile as fsWriteFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
+
+import { canAccess } from '#/utils/access.ts';
 
 /**
  * Writes content to a file, creating directories if needed
@@ -18,7 +19,7 @@ export const writeFile = async (
   content: string,
 ): Promise<void> => {
   const dir = path.dirname(filePath);
-  if (!existsSync(dir)) {
+  if (!(await canAccess(dir))) {
     await mkdir(dir, { recursive: true });
   }
   await fsWriteFile(filePath, content);

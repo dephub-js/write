@@ -1,6 +1,6 @@
 /* eslint-disable perfectionist/sort-objects */
 import { glob } from '@dephub/glob';
-import { cwd } from '@dephub/path';
+import { useCwd } from '@dephub/path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -23,9 +23,7 @@ export default defineConfig({
     },
     target: 'esnext',
     reportCompressedSize: true,
-
     emptyOutDir: true,
-
     rollupOptions: {
       external: ['*'],
       output: [
@@ -42,7 +40,7 @@ export default defineConfig({
   plugins: [dtsPlugin],
   resolve: {
     alias: {
-      '@': cwd('src'),
+      '@': useCwd('src'),
     },
   },
 });
