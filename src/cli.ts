@@ -5,12 +5,11 @@ import { Command, CommandError } from '@dephub/command';
 import { logger } from '@dephub/logger';
 
 import { writeFile } from './core/write.ts';
-import { description, name, version } from './utils/pkg.ts';
 
 const cmd = new Command()
-  .name(name.split('/')[1] ?? 'write')
-  .version(version)
-  .description(description)
+  .name(__PKG_NAME__.split('/')[1])
+  .version(__PKG_VERSION__)
+  .description(__PKG_DESCRIPTION__)
   .argument('filePath', 'Path where the file will be written')
   .argument('content', 'Content to write (if not provided, reads from stdin)')
   .handler(async ({ args: { content, filePath } }) => {

@@ -1,7 +1,7 @@
 {
   "name": "@dephub/write",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "File writing utility with automatic directory creation for Node.js",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",

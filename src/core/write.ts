@@ -2,7 +2,7 @@
 import { writeFile as fsWriteFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 
-import { canAccess } from '#/utils/access.ts';
+import { canAccess } from '#/utils.ts';
 
 /**
  * Writes content to a file, creating directories if needed
