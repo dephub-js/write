@@ -4,8 +4,8 @@
 import { Command, CommandError } from '@dephub/command';
 import { logger } from '@dephub/logger';
 
-import { writeFile } from './core/write.js';
-import { description, name, version } from './utils/pkg.js';
+import { writeFile } from './core/write.ts';
+import { description, name, version } from './utils/pkg.ts';
 
 const cmd = new Command()
   .name(name.split('/')[1] ?? 'write')

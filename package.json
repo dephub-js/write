@@ -1,7 +1,7 @@
 {
   "name": "@dephub/write",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "File writing utility with automatic directory creation for Node.js",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -18,6 +18,8 @@
     "lint": "eslint . --fix --max-warnings 0",
     "fmt": "prettier --write .",
     "clean": "rm -rf dist",
+    "prepack": "pnpm check && pnpm build",
+    "pack": "pnpm pack",
     "build": "vite build",
     "dev": "vite build -w --mode development"
   },
@@ -56,18 +58,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@dephub/command": "^3.0.0",
-    "@dephub/logger": "^1.2.0"
+    "@dephub/command": "^3.0.2",
+    "@dephub/logger": "^1.3.0"
   },
   "devDependencies": {
     "@dephub/eslint-ts": "^1.0.5",
     "@dephub/glob": "^1.0.2",
-    "@dephub/path": "^2.0.0",
-    "@types/node": "^26.6.6",
-    "eslint": "^10.14.0",
-    "prettier": "^3.9.10",
+    "@dephub/path": "^2.0.1",
+    "@types/node": "^26.6.7",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
     "typescript": "6.0.3",
-    "vite": "^8.3.6",
+    "vite": "^8.3.8",
     "vite-plugin-dts": "^5.1.2"
   },
   "imports": {
